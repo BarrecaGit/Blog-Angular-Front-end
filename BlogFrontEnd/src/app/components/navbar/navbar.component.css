@@ -2,5 +2,18 @@
     flex: 1 1 auto;
   }
 
-  
-mat-toolbar { margin: 0; font-family: 'Rajdhani', sans-serif; }
+a{
+  text-decoration: none;
+}
+
+.navbar{
+  background-color: #d20a0a; 
+}
+
+.RajdhaniNav{
+  background-color: #b70707;
+  font-size: 20px;
+  font-family: 'Rajdhani';
+  font-weight: bold;
+  margin-right: 10px;
+}

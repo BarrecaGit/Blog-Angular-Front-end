@@ -1,14 +1,32 @@
-<mat-toolbar color="warn">
-      
-            <span>Blog MMA</span>
-            <div>
-                  <!-- <a mat-button [routerLink]="'/accounts'"> Accounts </a>
-                  <a mat-button [routerLink]="'/create-account'"> Create Account </a>
-                  <a mat-button [routerLink]="'/contacts'"> Contacts </a>
-                  <a mat-button [routerLink]="'/create-contact'"> Create Contact </a>
-                  <a mat-button [routerLink]="'/activities'"> Activities </a>
-                  <a mat-button [routerLink]="'/create-activity'"> Create Activity </a> -->
-                  
-            </div>
-      
-</mat-toolbar>
+<nav class="navbar justify-content-between p-3">
+      <div class="container">
+          <a mat-button class="RajdhaniNav text-white" [routerLink]="['']">{{title}}</a>
+          <ul class="nav">
+            
+            <!--Login Button-->           
+            <li class="nav-item" *ngIf="!currentUser">
+              <a mat-button class="RajdhaniNav text-white" [routerLink]="['Login']">Login</a>
+            </li>
+
+            <!--Register Button-->
+            <li class="nav-item" *ngIf="!currentUser">
+              <a mat-button class="RajdhaniNav text-white" [routerLink]="['Register']">Register</a>
+            </li>
+            
+            <!--Hello-->
+            <li class="nav-item" style="margin-right: 10px" *ngIf="currentUser">
+             <p class="navbar-text ">Hello, <strong>{{currentUserId}}</strong></p>
+            </li>
+            
+            <!--New Post Button-->
+            <li class="nav-item" *ngIf="currentUser">
+              <a mat-button class="RajdhaniNav text-white" [routerLink]="['CreatePost']">New Post</a>
+            </li>
+
+            <!--Logout Button-->
+            <li class="nav-item" *ngIf="currentUser">
+              <a mat-button class="RajdhaniNav text-white" (btnClick)="LogoutUser()">Logout</a>
+            </li>
+          </ul>
+      </div>
+    </nav>

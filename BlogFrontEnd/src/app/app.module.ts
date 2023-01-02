@@ -15,13 +15,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { JwtModule, JwtHelperService  } from "@auth0/angular-jwt";
+import { LoginFormComponent } from './components/login-form/login-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BlogCardComponent,
     NavbarComponent,
-    HomePageComponent
+    HomePageComponent,
+    LoginFormComponent
   ],
   imports: [
     BrowserModule,
