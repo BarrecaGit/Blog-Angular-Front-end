@@ -1,0 +1,9 @@
+.example-card {
+    max-width: 400px;
+  }
+  
+  .example-header-image {
+    background-image: url('https://dmxg5wxfqgb4u.cloudfront.net/styles/inline/s3/2022-04/040122-Gilbert-Burns-Prepares-For-UFC-273-At-Stanford-MMA11.jpg?itok=SBYybuWG');
+    background-size: cover;
+  }
+  

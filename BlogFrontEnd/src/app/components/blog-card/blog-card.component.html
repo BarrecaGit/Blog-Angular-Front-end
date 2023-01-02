@@ -1,1 +1,15 @@
-<p>blog-card works!</p>
+<mat-card class="example-card">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>{{CurrentPost?.title}}</mat-card-title>
+    <mat-card-subtitle>{{CurrentPost?.userId}}</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image [src]="CurrentPost?.headerImage">
+  <mat-card-content class="pt-3 fw-bold">
+    <p>{{CurrentPost?.content}}</p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button>READ</button>
+    <!-- <button mat-button>LIKE</button> -->
+  </mat-card-actions>
+</mat-card>
