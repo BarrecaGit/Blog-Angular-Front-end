@@ -33,7 +33,7 @@ export class HomePageComponent implements OnInit {
   }
   constructor(private userService:UserService, private _snackBar: MatSnackBar, private titleSvc:Title, private postInstance:PostService){
     // test push
-    this.postArray.push(this.testPost);
+    // this.postArray.push(this.testPost);
   }
 
   ngOnInit(): void 

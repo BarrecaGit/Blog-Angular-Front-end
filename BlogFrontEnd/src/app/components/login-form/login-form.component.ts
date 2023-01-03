@@ -13,6 +13,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class LoginFormComponent {
 
   title = 'Login';
+  ErrorMessage = '';
   hide = true;
   loginError:boolean = false;
 
@@ -34,7 +35,6 @@ export class LoginFormComponent {
   
   ngOnInit(): void {
     this.titleSvc.setTitle('Login');
-    console.log('Login')
   }
 
   // Login()
@@ -59,7 +59,7 @@ export class LoginFormComponent {
   {
     let userId = this.loginFormGroup.get('userId')?.value;
     let password = this.loginFormGroup.get('password')?.value;
-    // console.log(userId, password);
+
     this.loginFormGroup.markAllAsTouched()
     if(this.loginFormGroup.valid)
     {
@@ -68,9 +68,18 @@ export class LoginFormComponent {
           console.log(data);
           this.userService.SetCurrentUser(data);
         },
-        error: (error) => {
+        error: (err) => 
+        {
           this.loginError = true;
-          console.log('Uh OH', error);
+          let errStringified = JSON.stringify(err);
+          console.log(errStringified)
+          let errObj = JSON.parse(errStringified);
+          console.log(errObj.error.message);
+          this.ErrorMessage = errObj.error.message;
+          this._snackBar.open(`Error: ${errObj.error.message}`, "Close", {
+            horizontalPosition: 'center',
+            verticalPosition: 'top',
+          });
         },
         complete: () => {
           this.router.navigate(['/']);

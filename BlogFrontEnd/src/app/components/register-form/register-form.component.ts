@@ -50,7 +50,8 @@ export class RegisterFormComponent {
           {
             next: (data) => 
             {
-              this._snackBar.open(`User: ${data.userId} has been successfully created`, 'Close', {
+              console.log(`User: ${data.userId} has been successfully created`)
+              this._snackBar.open(`Registration Successful!`, 'Close', {
                 horizontalPosition: 'center',
                 verticalPosition: 'top'
               });
@@ -59,8 +60,14 @@ export class RegisterFormComponent {
             error: (err)=>
             {
               this.responseError = true;
-              this.ErrorMessage = err.Message;
-              this._snackBar.open(`Error: ${JSON.stringify(err)}`);
+              let errStringified = JSON.stringify(err);
+              let errObj = JSON.parse(errStringified);
+              console.log(errObj.error.msg);
+              this.ErrorMessage = errObj.error.msg;
+              this._snackBar.open(`Error: ${errObj.error.msg}`, "Close", {
+                horizontalPosition: 'center',
+                verticalPosition: 'top',
+              });
             }
           })
       }
