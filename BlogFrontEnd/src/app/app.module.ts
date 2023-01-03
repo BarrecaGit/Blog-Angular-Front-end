@@ -10,12 +10,14 @@ import { MatIconModule } from '@angular/material/icon';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { MatCardModule } from '@angular/material/card'; 
 import { MatButtonModule } from '@angular/material/button';
+import {MatInputModule} from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { JwtModule, JwtHelperService  } from "@auth0/angular-jwt";
 import { LoginFormComponent } from './components/login-form/login-form.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import { LoginFormComponent } from './components/login-form/login-form.component
     BlogCardComponent,
     NavbarComponent,
     HomePageComponent,
-    LoginFormComponent
+    LoginFormComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +41,8 @@ import { LoginFormComponent } from './components/login-form/login-form.component
     ReactiveFormsModule,
     MatFormFieldModule,
     MatSnackBarModule,
-    JwtModule
+    JwtModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]
