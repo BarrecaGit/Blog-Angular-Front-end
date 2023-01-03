@@ -18,6 +18,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { JwtModule, JwtHelperService  } from "@auth0/angular-jwt";
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { RegisterFormComponent } from './components/register-form/register-form.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { FooterComponent } from './components/footer/footer.component';
     NavbarComponent,
     HomePageComponent,
     LoginFormComponent,
-    FooterComponent
+    FooterComponent,
+    RegisterFormComponent
   ],
   imports: [
     BrowserModule,

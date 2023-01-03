@@ -1,0 +1,45 @@
+
+<div class="pt-5 row d-flex justify-content-center">
+  <div class="col-md-6 text-center">
+
+    <h1 class="fw-bold">{{title}}</h1>
+    <p class="fw-bold" >Join an online community</p>
+
+    <form [formGroup]="registrationFormGroup">
+
+            <mat-form-field appearance="fill" id="matFormField">
+                <mat-label class="Rajdhani">Enter a Username</mat-label>
+                <input type="text" matInput name="userId" formControlName="userId">
+            </mat-form-field><br><!--make sure it validates right-->
+
+            <mat-form-field appearance="fill" id="matFormField">
+                <mat-label class="Rajdhani">First Name</mat-label>
+                <input type="text" matInput name="firstName" formControlName="firstName">
+            </mat-form-field><br>
+
+            <mat-form-field appearance="fill" id="matFormField">
+                <mat-label class="Rajdhani">Last Name</mat-label>
+                <input type="text" matInput name="lastName" formControlName="lastName">
+            </mat-form-field><br>
+
+            <mat-form-field appearance="fill" id="matFormField">
+                <mat-label class="Rajdhani">Email address</mat-label>
+                <input type="text" matInput name="emailAddress" formControlName="emailAddress">
+            </mat-form-field><br>
+
+            <mat-form-field appearance="fill" id="matFormField">
+                <mat-label class="Rajdhani">Enter your password</mat-label>
+                <input type="text" name="password" formControlName="password" matInput [type]="hide ? 'password' : 'text'">
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+            </mat-form-field><br>
+
+            <button id="mrBtn" mat-raised-button (click)="createUser()" color="warn">
+                Submit
+            </button>
+
+            <button id="mrBtn" mat-raised-button type="reset" color="primary">Reset</button>
+    </form>
+  </div>
+</div>

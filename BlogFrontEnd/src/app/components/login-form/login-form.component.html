@@ -1,7 +1,9 @@
 
 <div class="row p-5">
-    <!--Login Form-->
+    
     <div class="col-md-6 align-self-center" id="LoginArea">
+
+        <!--Login Form-->
         <h1 class="fw-bold">{{title}}</h1>
         <p class="fw-bold">Enter your login credentials below</p>
         
@@ -25,6 +27,14 @@
                 Login
             </button>
         </form>
+
+        <!--Register Button-->
+        <div class="mt-5">
+            <h3 class="fw-bold">Don't have an account?</h3>
+            <p class="fw-bold">Register</p>
+            <a mat-raised-button color="primary" [routerLink]="['/Register']">Register</a>
+        </div>
+        
     </div>
 
     <!--Image-->

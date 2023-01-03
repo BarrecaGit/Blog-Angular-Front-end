@@ -12,7 +12,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class LoginFormComponent {
 
-  title = 'Login'
+  title = 'Login';
   hide = true;
   loginError:boolean = false;
 
