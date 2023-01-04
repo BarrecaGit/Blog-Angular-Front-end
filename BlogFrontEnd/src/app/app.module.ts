@@ -19,6 +19,7 @@ import { JwtModule, JwtHelperService  } from "@auth0/angular-jwt";
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { RegisterFormComponent } from './components/register-form/register-form.component';
+import { CreatePostComponent } from './components/create-post/create-post.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { RegisterFormComponent } from './components/register-form/register-form.
     HomePageComponent,
     LoginFormComponent,
     FooterComponent,
-    RegisterFormComponent
+    RegisterFormComponent,
+    CreatePostComponent
   ],
   imports: [
     BrowserModule,
