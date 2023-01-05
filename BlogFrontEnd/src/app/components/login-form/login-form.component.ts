@@ -17,15 +17,10 @@ export class LoginFormComponent {
   hide = true;
   loginError:boolean = false;
 
-  
-  // userIdRequried = new FormControl('',[Validators.required]);
-  // passwordRequried = new FormControl('',[Validators.required]);
-
   loginFormGroup = new FormGroup({
     userId : new FormControl('',[Validators.required]),
     password : new FormControl('',[Validators.required])
   })
-  
   
   constructor(private _snackBar: MatSnackBar, private titleSvc:Title, private userService:UserService,private router:Router){}
 
@@ -36,24 +31,6 @@ export class LoginFormComponent {
   ngOnInit(): void {
     this.titleSvc.setTitle('Login');
   }
-
-  // Login()
-  // {
-  //   this.userService.Login(this.userId, this.password).subscribe({
-  //     next: (data) => {
-  //       console.log(data);
-  //       this.userService.SetCurrentUser(data);
-  //     },
-  //     error: (error) => {
-  //       this.loginError = true;
-  //       console.log(error);
-  //     },
-  //     complete: () => {
-  //       this.router.navigate(['/']);
-  //       console.log('Complete');
-  //     }
-  //   });
-  // }
 
   Login()
   {
@@ -67,6 +44,7 @@ export class LoginFormComponent {
         next: (data) => {
           console.log(data);
           this.userService.SetCurrentUser(data);
+          // location.reload();
         },
         error: (err) => 
         {
@@ -83,7 +61,7 @@ export class LoginFormComponent {
         },
         complete: () => {
           this.router.navigate(['/']);
-          console.log('Complete');
+          console.log('Login complete');
         }
       });
     }

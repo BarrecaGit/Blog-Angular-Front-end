@@ -14,15 +14,16 @@ export class AuthG implements CanActivate{
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> 
     {
-    if(this.userService.GetCurrentUser())
-    {
-        return true;
-    }
-    else
-    {
-        this.router.navigate(['/Login'])
-        return false;
-    }
+        if(this.userService.GetCurrentUser())
+        {
+            
+            return true;
+        }
+        else
+        {
+            this.router.navigate(['/Login'])
+            return false;
+        }
     }
 
 }

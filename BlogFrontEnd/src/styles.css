@@ -9,3 +9,7 @@ body { margin: 0; font-family: 'Rajdhani', sans-serif; }
 .Rajdhani{
     font-family: 'Rajdhani';
 }
+
+#btnPaddingRight{
+    margin-right: 1rem;
+}

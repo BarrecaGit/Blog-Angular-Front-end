@@ -17,24 +17,33 @@ export class NavbarComponent implements OnInit{
 
   constructor(private userService:UserService, private router:Router){}
 
-  ngOnInit(): void {
+  ngOnInit(): void 
+  {
     this.currentUser = this.userService.GetCurrentUser();
     this.decodeToken = this.userService.DecodeTokenObj(this.currentUser);
-    if(this.decodeToken){
+
+    if(this.decodeToken)
+    {
       this.currentUserId = this.decodeToken.data.userId;
-      //console.log("currentUserId blog card comp decodeToken : ", this.currentUserId)
-      }
+    }
+    
     this.userService.userLoggedIn.subscribe((data)=>{
-      if(data){
-        this.currentUser=this.userService.GetCurrentUser();
-      }else{
+      if(data)
+      {
+        this.currentUser = this.userService.GetCurrentUser();
+      }
+      else
+      {
         this.currentUser = undefined;
         this.router.navigate(['/']);
       }
     });
+
+    
   }
 
-  LogoutUser(){
+  LogoutUser()
+  {
     this.userService.LogoutUser();
   }
 }

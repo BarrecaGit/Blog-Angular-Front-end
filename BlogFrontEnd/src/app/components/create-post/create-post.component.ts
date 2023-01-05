@@ -25,7 +25,7 @@ export class CreatePostComponent {
 
   constructor(private _snackBar: MatSnackBar,private titleSvc:Title, private postInstance:PostService, private router:Router)
   {
-    this.newPost = new Post(0,new Date(),'','','','',new Date()); // might be an issue with id
+    this.newPost = new Post(0,new Date(),'','','','',new Date());
   }
 
   ngOnInit(): void 
@@ -33,8 +33,8 @@ export class CreatePostComponent {
     this.titleSvc.setTitle('Create a blog post');
   }
 
-  CreatePost(){
-
+  CreatePost()
+  {
     this.createPostFormGroup.markAllAsTouched()
     if(this.createPostFormGroup.valid)
     {

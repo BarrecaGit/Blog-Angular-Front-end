@@ -15,7 +15,7 @@ export class UserService {
 
   currentUser:Token | undefined;
 
-  currentUserObject:User ={
+  currentUserObject:User | undefined ={
     userId: '',
     firstName: '',
     lastName: '',
@@ -38,38 +38,38 @@ export class UserService {
     return this.httpClient.post<User>(`${environment.serverEndpoint}/Users`, newUser);
   }
 
-  Login(userId:string, password:string){
+  Login(userId:string, password:string)
+  {
     return this.httpClient.get<Token>(`${environment.serverEndpoint}/Users/Login/${userId}/${password}`);
   }
 
-  SetCurrentUser(token:Token){
+  SetCurrentUser(token:Token)
+  {
     this.currentUser = token;
     localStorage.setItem('token', JSON.stringify(token));
     this.userLoggedIn.emit(true);
   }
 
-  DecodeTokenObj(token?:Token){
+  DecodeTokenObj(token?:Token)
+  {
     let helper = new JwtHelperService();
-   
     let tokenString = JSON.stringify(token);
-    //console.log("token string ", tokenString)
-    
     let decodeToken = helper.decodeToken((tokenString));
     //console.log("decodeToken: ", decodeToken);
-
     return decodeToken;
-
-    
   }
 
-  GetCurrentUser(){
+  GetCurrentUser()
+  {
     return this.currentUser;
   }
 
-  LogoutUser(){
+  LogoutUser()
+  {
     this.currentUser = undefined;
     localStorage.setItem('token', '');
     this.userLoggedIn.emit(false);
+    location.reload();
   }
 
 
