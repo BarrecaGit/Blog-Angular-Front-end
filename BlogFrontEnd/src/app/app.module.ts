@@ -20,6 +20,7 @@ import { LoginFormComponent } from './components/login-form/login-form.component
 import { FooterComponent } from './components/footer/footer.component';
 import { RegisterFormComponent } from './components/register-form/register-form.component';
 import { CreatePostComponent } from './components/create-post/create-post.component';
+import { EditPostComponent } from './components/edit-post/edit-post.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { CreatePostComponent } from './components/create-post/create-post.compon
     LoginFormComponent,
     FooterComponent,
     RegisterFormComponent,
-    CreatePostComponent
+    CreatePostComponent,
+    EditPostComponent
   ],
   imports: [
     BrowserModule,

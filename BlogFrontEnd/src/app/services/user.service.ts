@@ -15,13 +15,13 @@ export class UserService {
 
   currentUser:Token | undefined;
 
-  currentUserObject:User | undefined ={
-    userId: '',
-    firstName: '',
-    lastName: '',
-    emailAddress: '',
-    password: ''
-  }
+  // currentUserObject:User | undefined ={
+  //   userId: '',
+  //   firstName: '',
+  //   lastName: '',
+  //   emailAddress: '',
+  //   password: ''
+  // }
 
   constructor(private httpClient:HttpClient) { 
 
@@ -32,7 +32,8 @@ export class UserService {
     
   }
 
-  CreateUser(userId:string, firstName:string, lastName:string, emailAddress:string, password:string){
+  CreateUser(userId:string, firstName:string, lastName:string, emailAddress:string, password:string)
+  {
     let newUser = {userId:userId, firstName:firstName, lastName:lastName, emailAddress:emailAddress, password:password};
 
     return this.httpClient.post<User>(`${environment.serverEndpoint}/Users`, newUser);
@@ -50,17 +51,20 @@ export class UserService {
     this.userLoggedIn.emit(true);
   }
 
+  // Returns a broken down Token object
   DecodeTokenObj(token?:Token)
   {
     let helper = new JwtHelperService();
     let tokenString = JSON.stringify(token);
     let decodeToken = helper.decodeToken((tokenString));
-    //console.log("decodeToken: ", decodeToken);
+    // console.log("decodeToken: ", decodeToken);
     return decodeToken;
   }
 
+  // Returns a raw Token object
   GetCurrentUser()
   {
+    // console.log(this.currentUser)
     return this.currentUser;
   }
 

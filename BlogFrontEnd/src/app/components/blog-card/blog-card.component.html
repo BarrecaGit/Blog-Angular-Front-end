@@ -4,12 +4,12 @@
     <mat-card-title class="Rajdhani fw-bold">{{CurrentPost?.title}}</mat-card-title>
     <mat-card-subtitle>{{CurrentPost?.userId}}</mat-card-subtitle>
   </mat-card-header>
+
   <img mat-card-image [src]="CurrentPost?.headerImage">
-  <!-- <mat-card-content class="pt-3 fw-bold">
-    <p>{{CurrentPost?.content}}</p>
-  </mat-card-content> -->
+  
   <mat-card-actions>
-    <button mat-raised-button color="primary">READ</button>
-    <!-- <button mat-button>LIKE</button> -->
+    <button id="btnPaddingRight" mat-raised-button color="primary">READ</button>
+    <!-- <button id="btnPaddingRight" mat-raised-button *ngIf="currentUserId == CurrentPost?.userId" color="warn" (click)="DeletePost(CurrentPost?.postId)">DELETE</button> -->
+    <button id="btnPaddingRight" mat-raised-button *ngIf="currentUserId == CurrentPost?.userId" color="warn" (click)="EditPost(CurrentPost?.postId)">EDIT</button>
   </mat-card-actions>
 </mat-card>

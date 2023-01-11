@@ -41,7 +41,8 @@ export class LoginFormComponent {
     if(this.loginFormGroup.valid)
     {
       this.userService.Login(userId!, password!).subscribe({
-        next: (data) => {
+        next: (data) => 
+        {
           console.log(data);
           this.userService.SetCurrentUser(data);
           // location.reload();

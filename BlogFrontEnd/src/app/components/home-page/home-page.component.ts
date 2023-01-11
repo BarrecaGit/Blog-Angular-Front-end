@@ -41,9 +41,12 @@ export class HomePageComponent implements OnInit {
     this.titleSvc.setTitle('Home Page');
     this.currentUser = this.userService.GetCurrentUser();
     this.userService.userLoggedIn.subscribe((data)=>{
-      if(data){
+      if(data)
+      {
         this.currentUser=this.userService.GetCurrentUser();
-      }else{
+      }
+      else
+      {
         this.currentUser = undefined;
       }
     });

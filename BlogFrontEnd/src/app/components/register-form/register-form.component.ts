@@ -50,7 +50,7 @@ export class RegisterFormComponent {
           {
             next: (data) => 
             {
-              console.log(`User: ${data.userId} has been successfully created`)
+              // console.log(`User: ${data.userId} has been successfully created`)
               this._snackBar.open(`Registration Successful!`, 'Close', {
                 horizontalPosition: 'center',
                 verticalPosition: 'top'
@@ -80,7 +80,7 @@ export class RegisterFormComponent {
       });
     }
 
-    console.log(this.newUser);
+    // console.log(this.newUser);
   }
   
   ngOnInit(): void {
