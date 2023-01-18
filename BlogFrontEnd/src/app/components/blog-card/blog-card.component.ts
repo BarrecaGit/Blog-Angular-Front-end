@@ -49,7 +49,7 @@ export class BlogCardComponent implements OnInit {
 
 
   
-  // DeletePost(postId?: number)
+  // DeletePost(postId?: string)
   // {
   //   console.log(`DeletePost in blog-card-component: ${postId} `)
 
@@ -77,9 +77,9 @@ export class BlogCardComponent implements OnInit {
   //   });
   // }
 
-  EditPost(postId?: number)
+  EditPost(postId?: string)
   {
-    console.log(`You are trying to edit this postId: ${postId} `)
+    // console.log(`You are trying to edit this postId: ${postId} `)
     this.router.navigate([`/EditPost/${postId}`]);
   }
 }

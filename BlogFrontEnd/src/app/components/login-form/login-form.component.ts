@@ -43,7 +43,7 @@ export class LoginFormComponent {
       this.userService.Login(userId!, password!).subscribe({
         next: (data) => 
         {
-          console.log(data);
+          //console.log(data);
           this.userService.SetCurrentUser(data);
           // location.reload();
         },
@@ -62,7 +62,7 @@ export class LoginFormComponent {
         },
         complete: () => {
           this.router.navigate(['/']);
-          console.log('Login complete');
+          //console.log('Login complete');
         }
       });
     }

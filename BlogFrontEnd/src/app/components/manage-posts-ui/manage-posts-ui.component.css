@@ -1,0 +1,27 @@
+table {
+  width: 100%;
+}
+
+th.mat-sort-header-sorted {
+  color: black;
+}
+
+.fa-trash {
+  font-size:20px;
+  color:red;
+}
+
+.fa-edit {
+  font-size: 20px;
+  padding-left: 10px;
+  color: blue;
+}
+
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48;
+}

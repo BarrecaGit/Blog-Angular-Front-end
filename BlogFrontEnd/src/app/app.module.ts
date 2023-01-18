@@ -21,6 +21,8 @@ import { FooterComponent } from './components/footer/footer.component';
 import { RegisterFormComponent } from './components/register-form/register-form.component';
 import { CreatePostComponent } from './components/create-post/create-post.component';
 import { EditPostComponent } from './components/edit-post/edit-post.component';
+import { ManagePostsUIComponent } from './components/manage-posts-ui/manage-posts-ui.component';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,8 @@ import { EditPostComponent } from './components/edit-post/edit-post.component';
     FooterComponent,
     RegisterFormComponent,
     CreatePostComponent,
-    EditPostComponent
+    EditPostComponent,
+    ManagePostsUIComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +51,8 @@ import { EditPostComponent } from './components/edit-post/edit-post.component';
     MatFormFieldModule,
     MatSnackBarModule,
     JwtModule,
-    MatInputModule
+    MatInputModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

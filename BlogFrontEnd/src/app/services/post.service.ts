@@ -32,38 +32,17 @@ export class PostService {
     return this.httpClient.get<Post[]>(`${environment.serverEndpoint}/Posts`).pipe();
   }
 
-
-
-  DeletePost(postId:number)
-  {
-    console.log('In DeletePost')
-    this.postArray = this.postArray.filter(j => j.postId !== postId);
-
-    let currentTokenString = localStorage.getItem('token');
-    console.log(currentTokenString)
-    let header = new HttpHeaders();
-
-    if(currentTokenString)
-    {
-      let currentTokenObj: Token = JSON.parse(currentTokenString) as Token;
-      console.log(currentTokenObj.token)
-      header = header.set('Authorization',`Bearer ${currentTokenObj.token}`);
-      console.log(header)
-    }
-    else
-    {
-      console.log('No currentToken')
-    }
-    
-    return this.httpClient.delete<Post>(`${environment.serverEndpoint}/Posts/${postId}`, this.httpOptions).pipe();
-  }
-
-  GetPostById(postId:number)
+  GetPostById(postId:string)
   {
     return this.httpClient.get(`${environment.serverEndpoint}/Posts/${postId}`);
   }
 
-  UpdatePost(postId:number, data:any)
+  GetPostsByUserId(userId:string)
+  {
+    return this.httpClient.get<Post[]>(`${environment.serverEndpoint}/Posts/User/${userId}`).pipe();
+  }
+
+  UpdatePost(postId:string, data:any)
   {
     let currentTokenString = localStorage.getItem('token');
     let header = new HttpHeaders();
@@ -92,9 +71,55 @@ export class PostService {
     {
       let currentTokenObj: Token = JSON.parse(currentTokenString) as Token;
       header = header.set('Authorization',`Bearer ${currentTokenObj.token}`);
-      console.log(header)
+      // console.log(header)
     }
 
     return this.httpClient.post(`${environment.serverEndpoint}/Posts`,post,{headers:header})
+  }
+
+  // DeletePost(postId:number)
+  // {
+  //   console.log('In DeletePost')
+  //   this.postArray = this.postArray.filter(j => j.postId !== postId);
+
+  //   let currentTokenString = localStorage.getItem('token');
+  //   //console.log(currentTokenString)
+  //   let header = new HttpHeaders();
+
+  //   if(currentTokenString)
+  //   {
+  //     let currentTokenObj: Token = JSON.parse(currentTokenString) as Token;
+  //     //console.log(currentTokenObj.token)
+  //     header = header.set('Authorization',`Bearer ${currentTokenObj.token}`);
+  //     //console.log(header)
+  //   }
+  //   else
+  //   {
+  //     console.log('No currentToken')
+  //   }
+    
+  //   // return this.httpClient.delete<Post>(`${environment.serverEndpoint}/Posts/${postId}`, this.httpOptions).pipe();
+  //   return this.httpClient.delete(`${environment.serverEndpoint}/Posts/${postId}`);
+  // }
+
+  DeletePost(postId:string)
+  {
+    console.log('In DeletePost')
+    
+
+    let currentTokenString = localStorage.getItem('token');
+    let header = new HttpHeaders();
+
+    if(currentTokenString)
+    {
+      let currentTokenObj: Token = JSON.parse(currentTokenString) as Token;
+      header = header.set('Authorization',`Bearer ${currentTokenObj.token}`);
+    }
+    else
+    {
+      console.log('No currentToken')
+    }
+    
+    return this.httpClient.delete(`${environment.serverEndpoint}/Posts/${postId}`, {headers:header});
   }
 }

@@ -25,7 +25,7 @@ export class CreatePostComponent {
 
   constructor(private _snackBar: MatSnackBar,private titleSvc:Title, private postInstance:PostService, private router:Router)
   {
-    this.newPost = new Post(0,new Date(),'','','','',new Date());
+    this.newPost = new Post('',new Date(),'','','','',new Date());
   }
 
   ngOnInit(): void 

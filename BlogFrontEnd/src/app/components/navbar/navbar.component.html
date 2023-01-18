@@ -18,7 +18,11 @@
              <p class="navbar-text text-white fw-bold">Hello, {{currentUserId}}</p>
             </li>
             
-            <!--New Post Button-->
+            <li class="nav-item" *ngIf="currentUser">
+              <a mat-button class="RajdhaniNav text-white" (click)="ManagePosts()">Manage Posts</a>
+            </li>
+
+            <!--New Post Button - remove from navbar eventually-->
             <li class="nav-item" *ngIf="currentUser">
               <a mat-button class="RajdhaniNav text-white" [routerLink]="['CreatePost']">New Post</a>
             </li>

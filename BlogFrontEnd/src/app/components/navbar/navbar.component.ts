@@ -42,6 +42,11 @@ export class NavbarComponent implements OnInit{
     
   }
 
+  ManagePosts()
+  {
+    this.router.navigate([`/ManagePosts/User/${this.currentUserId}`]);
+  }
+
   LogoutUser()
   {
     this.userService.LogoutUser();

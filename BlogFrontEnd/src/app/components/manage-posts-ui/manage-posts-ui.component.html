@@ -1,0 +1,31 @@
+
+<div class="p-2 mt-5">
+  <h4 class="fw-bold">Your posts</h4>
+  <button mat-raised-button [routerLink]="['/CreatePost']">
+    <mat-icon class="material-symbols-outlined">
+      post_add
+    </mat-icon>
+    New
+  </button>
+    
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Title</th>
+          <th scope="col">Created</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <h5 class="pt-5" *ngIf="collection <= 0">Nothing here... start posting!</h5>
+        <tr *ngFor="let post of collection">
+          <td>{{post.title}}</td>
+          <td>{{post.createdDate}}</td>
+          <td>
+            <i (click)="DeletePost(post.postId)" class="fa fa-trash"></i>
+            <i class="fa fa-edit"></i>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+</div>
