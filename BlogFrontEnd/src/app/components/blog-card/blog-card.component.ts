@@ -77,7 +77,7 @@ export class BlogCardComponent implements OnInit {
   //   });
   // }
 
-  EditPost(postId?: string)
+  navEdit(postId?: string)
   {
     // console.log(`You are trying to edit this postId: ${postId} `)
     this.router.navigate([`/EditPost/${postId}`]);

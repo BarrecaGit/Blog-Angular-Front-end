@@ -65,11 +65,7 @@ export class EditPostComponent implements OnInit {
 
   collection()
   {
-    // this.postInstance.UpdatePost(this.activatedRoute.snapshot.params['postId'], this.editPostFormGroup.value).subscribe((result:any)=>{
-    //   console.log(result)
-    //   this.router.navigate(['/'])
-    // });
-    
+   
     this.postInstance.UpdatePost(this.activatedRoute.snapshot.params['postId'], this.editPostFormGroup.value).subscribe({
       next: (data) => {
         console.log(data);
@@ -90,7 +86,7 @@ export class EditPostComponent implements OnInit {
           horizontalPosition: 'center',
           verticalPosition: 'top'
         });
-        this.router.navigate(['/']);
+        this.router.navigate([`/ManagePosts/User/${this.currentUserId}`]);//nav to manage ui
         console.log('Post successfully updated');
       }
     });
