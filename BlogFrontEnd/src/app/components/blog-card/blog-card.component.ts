@@ -47,39 +47,5 @@ export class BlogCardComponent implements OnInit {
     });
   }
 
-
   
-  // DeletePost(postId?: string)
-  // {
-  //   console.log(`DeletePost in blog-card-component: ${postId} `)
-
-  //   this.postInstance.DeletePost(postId!).subscribe({
-  //     next:(data) => {
-  //       this._snackBar.open(`Post has been successfully deleted`, 'Close', {
-  //         horizontalPosition: 'center',
-  //         verticalPosition: 'top'
-  //       });
-  //       console.log(data);
-  //       this.router.navigate(['/']);
-  //     },
-  //     error: (err) => { 
-  //       this.responseError = true;
-  //       let errStringified = JSON.stringify(err);
-  //       console.log(errStringified)
-  //       let errObj = JSON.parse(errStringified);
-  //       console.log(errObj.error.message);
-  //       this.ErrorMessage = errObj.error.message; // check message or msg
-  //       this._snackBar.open(`Error: ${errObj.error.message}`, "Close", {
-  //         horizontalPosition: 'center',
-  //         verticalPosition: 'top',
-  //       });
-  //     }
-  //   });
-  // }
-
-  navEdit(postId?: string)
-  {
-    // console.log(`You are trying to edit this postId: ${postId} `)
-    this.router.navigate([`/EditPost/${postId}`]);
-  }
 }

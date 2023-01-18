@@ -41,7 +41,7 @@ export class ManagePostsUIComponent implements OnInit {
     public dialog: MatDialog
     ){}
 
-  collection:any = [];
+  collection:Post[] = [];
 
   ngOnInit(): void
   {
@@ -66,8 +66,8 @@ export class ManagePostsUIComponent implements OnInit {
     });
     
     this.postInstance.GetPostsByUserId(this.currentUserId!).subscribe((result) => {
-      console.log(result)
       this.collection = result;
+      console.log(this.collection)
       this.dataSource = new MatTableDataSource(this.collection);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
@@ -87,12 +87,13 @@ export class ManagePostsUIComponent implements OnInit {
   
   DeletePost(postId: string)
   {
-    console.warn(postId);
-    alert("Are you sure");
     // get the index of the post by the postId
-    let position:number = this.collection.indexOf(postId, 0);
+    let index = this.collection.findIndex(i => i.postId === postId);
+    
     // then splice
-    this.collection.splice(position-1,1);
+    this.collection.splice(index,1);
+    
+    // update dataSource
     this.dataSource = new MatTableDataSource(this.collection);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;

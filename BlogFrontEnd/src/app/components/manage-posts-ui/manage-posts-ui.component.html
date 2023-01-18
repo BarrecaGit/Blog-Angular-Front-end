@@ -15,7 +15,7 @@
 
   
   
-  <h5 *ngIf="collection <= 0">Nothing here... start posting!</h5>
+  <h5 *ngIf="collection.length <= 0">Nothing here... start posting!</h5>
 
   <div *ngIf="collection.length >= 1" class="mat-elevation-z8">
     
@@ -41,7 +41,7 @@
             <i (click)="DeletePost(row.postId)" class="fa fa-regular fa-trash-can"></i>
         </td>
       </ng-container>
-      
+
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   
