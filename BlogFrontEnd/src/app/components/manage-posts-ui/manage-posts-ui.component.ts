@@ -11,6 +11,7 @@ import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import {Sort} from '@angular/material/sort';
 import {MatDialog} from '@angular/material/dialog';
+import { ConfDialogComponent } from '../conf-dialog/conf-dialog.component';
 
 @Component({
   selector: 'app-manage-posts-ui',
@@ -24,6 +25,7 @@ export class ManagePostsUIComponent implements OnInit {
   decodeToken:any;
   responseError = false;
   ErrorMessage = '';
+
 
   userPostArray:Post[] =[];
 
@@ -72,6 +74,7 @@ export class ManagePostsUIComponent implements OnInit {
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     })
+
   }
 
 
@@ -105,9 +108,24 @@ export class ManagePostsUIComponent implements OnInit {
 
   navEdit(postId?: string)
   {
-    // console.log(`You are trying to edit this postId: ${postId} `)
     this.router.navigate([`/EditPost/${postId}`]);
   }
 
+  openDialog(postId:string)
+  {
+		const dialogRef = this.dialog.open(ConfDialogComponent,{
+		data:
+    {
+			message: "Are you sure want to delete this?"
+		}
+		});
+		
+		dialogRef.afterClosed().subscribe((confirmed: boolean) => {
+			if (confirmed) 
+      {
+				this.DeletePost(postId);
+			}
+		});
+	}
 
 }

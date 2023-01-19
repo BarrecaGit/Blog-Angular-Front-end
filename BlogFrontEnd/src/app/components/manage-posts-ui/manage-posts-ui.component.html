@@ -8,6 +8,7 @@
     </mat-icon>
     Add New
   </button>
+  
   <mat-form-field appearance="fill" class="pt-2">
     <mat-label>Filter</mat-label>
     <input matInput (keyup)="applyFilter($event)" placeholder="Ex. UFC" #input>
@@ -16,7 +17,6 @@
   
   
   <h5 *ngIf="collection.length <= 0">Nothing here... start posting!</h5>
-
   <div *ngIf="collection.length >= 1" class="mat-elevation-z8">
     
     <table mat-table [dataSource]="dataSource" matSort>
@@ -38,7 +38,10 @@
         <th mat-header-cell *matHeaderCellDef> Actions </th>
         <td mat-cell *matCellDef="let row">
             <i class="fa fa-regular fa-pen-to-square" (click)="navEdit(row.postId)" ></i>
-            <i (click)="DeletePost(row.postId)" class="fa fa-regular fa-trash-can"></i>
+            <!-- <i (click)="DeletePost(row.postId)" class="fa fa-regular fa-trash-can"></i> -->
+            <i (click)="openDialog(row.postId)" class="fa fa-regular fa-trash-can"></i>
+           
+            
         </td>
       </ng-container>
 
