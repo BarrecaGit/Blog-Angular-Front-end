@@ -3,7 +3,9 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
+import { Token } from 'src/app/models/token.model';
 import { Post } from 'src/app/models/post.model';
+import { UserService } from 'src/app/services/user.service';
 import { PostService } from 'src/app/services/post.service';
 
 @Component({
@@ -16,6 +18,9 @@ export class CreatePostComponent {
   newPost:Post;
   responseError = false;
   ErrorMessage = '';
+  currentUser:Token | undefined;
+  currentUserId:string | undefined; // the user logged in
+  decodeToken:any;
 
   createPostFormGroup = new FormGroup({
     title : new FormControl('',[Validators.required]),
@@ -23,7 +28,7 @@ export class CreatePostComponent {
     content : new FormControl('',[Validators.required])
   });
 
-  constructor(private _snackBar: MatSnackBar,private titleSvc:Title, private postInstance:PostService, private router:Router)
+  constructor(private _snackBar: MatSnackBar,private titleSvc:Title, private userService:UserService,private postInstance:PostService, private router:Router)
   {
     this.newPost = new Post('',new Date(),'','','','',new Date());
   }
@@ -31,6 +36,25 @@ export class CreatePostComponent {
   ngOnInit(): void 
   {
     this.titleSvc.setTitle('Create a blog post');
+    this.currentUser = this.userService.GetCurrentUser();
+    this.decodeToken = this.userService.DecodeTokenObj(this.currentUser);
+    if(this.decodeToken)
+    {
+      this.currentUserId = this.decodeToken.data.userId;
+      console.log(this.currentUserId)
+    }
+    this.userService.userLoggedIn.subscribe((data)=>{
+      if(data)
+      {
+        this.currentUser = this.userService.GetCurrentUser();
+        console.log(this.currentUser)
+      }
+      else
+      {
+        console.log('No data')
+        this.currentUser = undefined;
+      }
+    });
   }
 
   CreatePost()
@@ -54,8 +78,8 @@ export class CreatePostComponent {
               horizontalPosition: 'center',
               verticalPosition: 'top'
             });
-            console.log(data);
-            this.router.navigate(['/']);
+            // console.log(data);
+            this.router.navigate([`/ManagePosts/User/${this.currentUserId}`]);//nav to manage ui
           },
           error: (err) => { // change
             this.responseError = true;

@@ -8,6 +8,6 @@
   <img mat-card-image [src]="CurrentPost?.headerImage">
   
   <mat-card-actions>
-    <button class="btnPaddingRight" mat-raised-button color="primary">READ</button>
+    <button class="btnPaddingRight" mat-raised-button color="primary" (click)="viewPost(CurrentPost?.postId)">READ</button>
   </mat-card-actions>
 </mat-card>

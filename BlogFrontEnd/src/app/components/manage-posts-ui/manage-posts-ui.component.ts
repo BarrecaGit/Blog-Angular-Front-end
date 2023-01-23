@@ -12,6 +12,7 @@ import {MatTableDataSource} from '@angular/material/table';
 import {Sort} from '@angular/material/sort';
 import {MatDialog} from '@angular/material/dialog';
 import { ConfDialogComponent } from '../conf-dialog/conf-dialog.component';
+import {animate, state, style, transition, trigger} from '@angular/animations';
 
 @Component({
   selector: 'app-manage-posts-ui',
@@ -26,6 +27,7 @@ export class ManagePostsUIComponent implements OnInit {
   responseError = false;
   ErrorMessage = '';
 
+  
 
   userPostArray:Post[] =[];
 
@@ -69,7 +71,7 @@ export class ManagePostsUIComponent implements OnInit {
     
     this.postInstance.GetPostsByUserId(this.currentUserId!).subscribe((result) => {
       this.collection = result;
-      console.log(this.collection)
+      // console.log(this.collection)
       this.dataSource = new MatTableDataSource(this.collection);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
@@ -109,6 +111,11 @@ export class ManagePostsUIComponent implements OnInit {
   navEdit(postId?: string)
   {
     this.router.navigate([`/EditPost/${postId}`]);
+  }
+
+  navDetails(postId?: string)
+  {
+    this.router.navigate([`/postDetails/${postId}`]);
   }
 
   openDialog(postId:string)

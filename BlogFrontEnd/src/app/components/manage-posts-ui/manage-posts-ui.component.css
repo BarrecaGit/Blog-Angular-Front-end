@@ -12,18 +12,13 @@ th.mat-sort-header-sorted {
   width: 100%;
 }
 
-.fa {
-  font-size:20px;
-}
-
 .fa-trash-can {
-  padding-left: 10px;
   color:red;
+  padding-left: 10px;
 }
 
-.fa-edit {
-  
-  color: blue;
+.fa-angles-right{
+  padding-left: 10px;
 }
 
 th {

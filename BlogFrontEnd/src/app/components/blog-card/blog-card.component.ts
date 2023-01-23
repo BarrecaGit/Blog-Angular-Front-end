@@ -47,5 +47,8 @@ export class BlogCardComponent implements OnInit {
     });
   }
 
-  
+  viewPost(postId:string| undefined)
+  {
+    this.router.navigate([`/viewPost/${postId}`]);
+  }
 }

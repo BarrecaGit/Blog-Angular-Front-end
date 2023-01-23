@@ -13,3 +13,7 @@ body { margin: 0; font-family: 'Rajdhani', sans-serif; }
 .btnPaddingRight{
     margin-right: 1rem;
 }
+
+.fa {
+  font-size:20px;
+}

@@ -27,6 +27,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ConfDialogComponent } from './components/conf-dialog/conf-dialog.component';
+import { PostDetailsComponent } from './components/post-details/post-details.component';
+import { ViewPostComponent } from './components/view-post/view-post.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ import { ConfDialogComponent } from './components/conf-dialog/conf-dialog.compon
     CreatePostComponent,
     EditPostComponent,
     ManagePostsUIComponent,
-    ConfDialogComponent
+    ConfDialogComponent,
+    PostDetailsComponent,
+    ViewPostComponent
   ],
   imports: [
     BrowserModule,
