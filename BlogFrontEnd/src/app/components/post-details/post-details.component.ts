@@ -4,6 +4,7 @@ import { PostService } from 'src/app/services/post.service';
 import { UserService } from 'src/app/services/user.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Post } from 'src/app/models/post.model';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-post-details',
@@ -12,7 +13,7 @@ import { Post } from 'src/app/models/post.model';
 })
 export class PostDetailsComponent implements OnInit {
 
-  headerText:string = "Details of this post";
+  headerText:string = "Details";
 
   currentUser:Token | undefined;
   currentUserId:string | undefined; // the user logged in
@@ -21,11 +22,12 @@ export class PostDetailsComponent implements OnInit {
   currentPost:Post = new Post('',new Date(),'','','','',new Date());
 
 
-  constructor(private userService:UserService,private postInstance:PostService, private router:Router, private activatedRoute:ActivatedRoute){}
+  constructor(private userService:UserService,private postInstance:PostService, private router:Router, private activatedRoute:ActivatedRoute,private titleSvc:Title){}
 
   
   ngOnInit(): void
   {
+    
     this.postInstance.GetPostById(this.activatedRoute.snapshot.params['postId']).subscribe((result: any) => {
       this.currentPost!.postId = result['postId'],
       this.currentPost!.createdDate = result['createdDate'],
@@ -33,7 +35,8 @@ export class PostDetailsComponent implements OnInit {
       this.currentPost!.content = result['content'],
       this.currentPost!.userId = result['userId'],
       this.currentPost!.headerImage = result['headerImage'],
-      this.currentPost!.lastUpdated = result['lastUpdated']
+      this.currentPost!.lastUpdated = result['lastUpdated'],
+      this.titleSvc.setTitle(`${this.currentPost.title} Details`);
     })
 
 

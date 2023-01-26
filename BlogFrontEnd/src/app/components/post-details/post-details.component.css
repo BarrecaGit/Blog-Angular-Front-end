@@ -1,3 +1,9 @@
 td{ 
     font-weight:bold;
 }
+
+img{
+    width: auto;
+    height: 250px;
+    border-radius: 5px;
+}

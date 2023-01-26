@@ -10,7 +10,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { MatCardModule } from '@angular/material/card'; 
 import { MatButtonModule } from '@angular/material/button';
-import {MatInputModule} from '@angular/material/input';
+import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -29,6 +29,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { ConfDialogComponent } from './components/conf-dialog/conf-dialog.component';
 import { PostDetailsComponent } from './components/post-details/post-details.component';
 import { ViewPostComponent } from './components/view-post/view-post.component';
+import { QuillModule } from 'ngx-quill';
+import { ListPostsComponent } from './components/list-posts/list-posts.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,8 @@ import { ViewPostComponent } from './components/view-post/view-post.component';
     ManagePostsUIComponent,
     ConfDialogComponent,
     PostDetailsComponent,
-    ViewPostComponent
+    ViewPostComponent,
+    ListPostsComponent
   ],
   imports: [
     BrowserModule,
@@ -64,7 +67,11 @@ import { ViewPostComponent } from './components/view-post/view-post.component';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    MatDialogModule
+    MatDialogModule,
+    QuillModule.forRoot({
+      modules: {
+      }
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

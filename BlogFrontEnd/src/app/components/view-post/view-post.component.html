@@ -1,8 +1,11 @@
-<div class="p-5">
+<div class="mt-5 p-5 mat-elevation-z8">
+    <h5>{{currentPost.userId}}</h5>
+    <hr>
+    <h1>{{currentPost.title}}</h1>
     <div class="row">
-        <div *ngFor="let item of currentPost | keyvalue">
-            <dt class="col-md-3">{{item.key}}</dt>
-            <dd class="col-md-9">{{item.value}}</dd>
-        </div>
+        <img mat-card-image [src]="currentPost.headerImage">
+        <p [innerHTML]="currentPost.content"></p>
+        <p>{{currentPost.userId}} {{currentPost.createdDate.toString().slice(0,10)}}</p>
     </div>
+    <a (click)="navBrowse()"><i class="mt-3 fa fa-solid fa-angles-left"> Return</i></a>
 </div>

@@ -1,8 +1,12 @@
-<nav class="navbar justify-content-between p-3">
+<nav class="warm2bg navbar justify-content-between p-3">
       <div class="container">
           <a mat-button class="RajdhaniNav text-white" [routerLink]="['']">{{title}}</a>
           <ul class="nav">
-            
+                   
+             <li class="nav-item" >
+              <a mat-button class="RajdhaniNav text-white" [routerLink]="['PostList']">Blog</a>
+            </li>
+
             <!--Login Button-->           
             <li class="nav-item" *ngIf="!currentUser">
               <a mat-button class="RajdhaniNav text-white" [routerLink]="['Login']">Login</a>
@@ -11,11 +15,6 @@
             <!--Register Button-->
             <li class="nav-item" *ngIf="!currentUser">
               <a mat-button class="RajdhaniNav text-white" [routerLink]="['Register']">Register</a>
-            </li>
-            
-            <!--Hello-->
-            <li class="nav-item" style="margin-right: 10px" *ngIf="currentUser">
-             <p class="navbar-text text-white fw-bold">Hello, {{currentUserId}}</p>
             </li>
             
             <li class="nav-item" *ngIf="currentUser">

@@ -5,6 +5,7 @@ import { Token } from 'src/app/models/token.model';
 import { PostService } from 'src/app/services/post.service';
 import { UserService } from 'src/app/services/user.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 
 
 @Component({
@@ -29,10 +30,42 @@ export class EditPostComponent implements OnInit {
   });
 
   
-  constructor(private _snackBar: MatSnackBar,private userService:UserService,private postInstance:PostService, private router:Router, private activatedRoute:ActivatedRoute){}
+  editorStyle = {
+    height: '300px',
+    width: 'full-width',
+    backgroundColor: 'white'
+  }
+  
+  quillConfig = {
+    toolbar: {
+      container: [
+        ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+        ['blockquote', 'code-block'],
+
+        [{ 'header': 1 }, { 'header': 2 }],               // custom button values
+        [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+        [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
+        [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
+        [{ 'direction': 'rtl' }],                         // text direction
+
+        [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
+        [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+
+        [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+        [{ 'font': [] }],
+        [{ 'align': [] }],
+
+        ['clean']  
+      ]
+      
+    }
+  }
+  
+  constructor(private _snackBar: MatSnackBar,private userService:UserService,private postInstance:PostService, private router:Router, private activatedRoute:ActivatedRoute,private titleSvc:Title){}
 
   ngOnInit(): void
   {
+    this.titleSvc.setTitle("Edit");
     this.postInstance.GetPostById(this.activatedRoute.snapshot.params['postId']).subscribe((result: any) => {
       this.editPostFormGroup = new FormGroup({
         title : new FormControl(result['title']),
@@ -90,6 +123,11 @@ export class EditPostComponent implements OnInit {
         console.log('Post successfully updated');
       }
     });
+  }
+  
+  navManageUi()
+  {
+    this.router.navigate([`/ManagePosts/User/${this.currentUserId}`]);//nav to manage ui
   }
 
 }

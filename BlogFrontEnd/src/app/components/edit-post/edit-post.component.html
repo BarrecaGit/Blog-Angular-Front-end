@@ -17,22 +17,14 @@
             <input type="text" matInput name="headerImage" formControlName="headerImage">
         </mat-form-field><br>
 
-        <mat-form-field class="example-full-width" class="example-full-width">
-            <mat-label>Leave a comment</mat-label>
-            <textarea name="content" formControlName="content"
-            cdkTextareaAutosize
-            cdkAutosizeMinRows="10"
-            cdkAutosizeMaxRows="500" matInput placeholder="Ex. Gosh darn! That Dana White says some whacky things..."></textarea>
-          </mat-form-field><br>
+        <quill-editor [modules]="quillConfig" name="content" [style]="editorStyle" formControlName="content"></quill-editor>
 
-        <button mat-raised-button id="btnPaddingRight" text="Update" color="warn" >Update</button>
+        <button mat-raised-button class="btnPaddingRight" text="Update" color="warn" >Update</button>
 
-        <button id="mrBtn" mat-raised-button id="btnPaddingRight" type="reset" color="primary">Reset</button>
+        <button id="mrBtn" mat-raised-button class="btnPaddingRight" type="reset" color="primary">Reset</button>
         
     </form>
-    <div class="mt-2">
-        <h5>More</h5>
-        <button mat-raised-button id="btnPaddingRight" text="Delete" color="warn" >Delete this post</button>
-    </div>
+    
+    <i class="mt-4 fa fa-solid fa-angles-left" (click)="navManageUi()"> Return</i>
     
 </div>

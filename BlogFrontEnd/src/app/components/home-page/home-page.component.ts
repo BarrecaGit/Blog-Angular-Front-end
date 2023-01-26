@@ -21,6 +21,11 @@ export class HomePageComponent implements OnInit {
 
   postArray:Post[] =[];
 
+  BrowseBtn = {
+    backgroundColor: '#E85A4F',
+    color: 'white'
+  }
+
   constructor(private userService:UserService, private _snackBar: MatSnackBar, private titleSvc:Title, private postInstance:PostService){ }
 
   ngOnInit(): void 

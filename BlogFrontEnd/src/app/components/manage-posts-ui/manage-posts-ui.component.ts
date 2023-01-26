@@ -1,11 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Token } from 'src/app/models/token.model';
 import { PostService } from 'src/app/services/post.service';
 import { UserService } from 'src/app/services/user.service';
 import { Post } from 'src/app/models/post.model';
-import {AfterViewInit, ViewChild} from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
@@ -13,6 +12,7 @@ import {Sort} from '@angular/material/sort';
 import {MatDialog} from '@angular/material/dialog';
 import { ConfDialogComponent } from '../conf-dialog/conf-dialog.component';
 import {animate, state, style, transition, trigger} from '@angular/animations';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-manage-posts-ui',
@@ -27,8 +27,6 @@ export class ManagePostsUIComponent implements OnInit {
   responseError = false;
   ErrorMessage = '';
 
-  
-
   userPostArray:Post[] =[];
 
   displayedColumns: string[] = ['title', 'createdDate', 'actions'];
@@ -42,13 +40,15 @@ export class ManagePostsUIComponent implements OnInit {
     private postInstance:PostService,
     private router:Router,
     private activatedRoute:ActivatedRoute,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private titleSvc:Title
     ){}
 
   collection:Post[] = [];
 
   ngOnInit(): void
   {
+    this.titleSvc.setTitle("Posts");
     this.currentUser = this.userService.GetCurrentUser();
     this.decodeToken = this.userService.DecodeTokenObj(this.currentUser);
     if(this.decodeToken)
@@ -76,7 +76,7 @@ export class ManagePostsUIComponent implements OnInit {
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     })
-
+    
   }
 
 

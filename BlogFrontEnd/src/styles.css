@@ -1,7 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&display=swap');
-
-html, body { height: 100%; background-color: whitesmoke;}
+@import '~quill/dist/quill.core.css';
+@import '~quill/dist/quill.bubble.css';
+@import '~quill/dist/quill.snow.css';
+html, body { height: 100%; background-color: white;}
 
 /* body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */
 body { margin: 0; font-family: 'Rajdhani', sans-serif; }
@@ -16,4 +18,24 @@ body { margin: 0; font-family: 'Rajdhani', sans-serif; }
 
 .fa {
   font-size:20px;
+}
+
+.warm1bg{
+  background-color:#E85A4F;
+}
+
+.warm2bg{
+  background-color: #3B8BEB;
+}
+
+.warm3bg{
+  background-color: #E7E3D4;
+}
+
+.warm4bg{
+  background-color: #C4DBF6;
+}
+
+.warm5bg{
+  background-color: #8590AA;
 }

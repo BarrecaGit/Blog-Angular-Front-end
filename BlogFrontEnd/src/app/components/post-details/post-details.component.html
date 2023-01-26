@@ -2,8 +2,14 @@
     <h2>{{headerText}}</h2>
     <div class="row">
         <div *ngFor="let item of currentPost | keyvalue">
-            <dt class="col-md-3">{{item.key}}</dt>
-            <dd class="col-md-9">{{item.value}}</dd>
+            <dt class="col-md-3">
+                {{item.key}}
+            </dt>
+            <dd *ngIf="item.key=='headerImage'">
+                <img mat-card-image [src]="item.value">
+            </dd>
+            <dd class="bg-light p-3 col-md-9" [innerHTML]="item.value">
+            </dd>
         </div>
     </div>
     <i class="fa fa-solid fa-angles-left" (click)="navManageUi()"></i>

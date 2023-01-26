@@ -22,11 +22,38 @@ export class CreatePostComponent {
   currentUserId:string | undefined; // the user logged in
   decodeToken:any;
 
-  createPostFormGroup = new FormGroup({
-    title : new FormControl('',[Validators.required]),
-    headerImage : new FormControl('', [Validators.required]),
-    content : new FormControl('',[Validators.required])
-  });
+  createPostFormGroup!: FormGroup;
+
+  editorStyle = {
+    height: '300px',
+    width: 'full-width',
+    backgroundColor: 'white'
+  }
+
+  quillConfig = {
+    toolbar: {
+      container: [
+        ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+        ['blockquote', 'code-block'],
+
+        [{ 'header': 1 }, { 'header': 2 }],               // custom button values
+        [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+        [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
+        [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
+        [{ 'direction': 'rtl' }],                         // text direction
+
+        [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
+        [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+
+        [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+        [{ 'font': [] }],
+        [{ 'align': [] }],
+
+        ['clean']  
+      ]
+      
+    }
+  }
 
   constructor(private _snackBar: MatSnackBar,private titleSvc:Title, private userService:UserService,private postInstance:PostService, private router:Router)
   {
@@ -35,6 +62,11 @@ export class CreatePostComponent {
 
   ngOnInit(): void 
   {
+    this.createPostFormGroup = new FormGroup({
+      'title': new FormControl('',[Validators.required]),
+      'headerImage': new FormControl('',[Validators.required]),
+      'content': new FormControl('',[Validators.required])
+    })
     this.titleSvc.setTitle('Create a blog post');
     this.currentUser = this.userService.GetCurrentUser();
     this.decodeToken = this.userService.DecodeTokenObj(this.currentUser);
@@ -59,13 +91,16 @@ export class CreatePostComponent {
 
   CreatePost()
   {
+    console.log(this.createPostFormGroup.get('content')?.value)    
     this.createPostFormGroup.markAllAsTouched()
     if(this.createPostFormGroup.valid)
     {
       let title = this.createPostFormGroup.get('title')?.value;
       let headerImage = this.createPostFormGroup.get('headerImage')?.value;
+      
       let content = this.createPostFormGroup.get('content')?.value;
-    
+      // console.log(`Content: ${content}`)
+
       if(title && content && headerImage)
       {
         this.newPost.title = title;

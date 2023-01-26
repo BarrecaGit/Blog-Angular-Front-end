@@ -1,13 +1,6 @@
-<mat-card class="example-card">
-  <mat-card-header>
-    <div mat-card-avatar class="example-header-image"></div>
-    <mat-card-title class="Rajdhani fw-bold">{{CurrentPost?.title}}</mat-card-title>
-    <mat-card-subtitle>{{CurrentPost?.userId}}</mat-card-subtitle>
-  </mat-card-header>
-
-  <img mat-card-image [src]="CurrentPost?.headerImage">
-  
-  <mat-card-actions>
-    <button class="btnPaddingRight" mat-raised-button color="primary" (click)="viewPost(CurrentPost?.postId)">READ</button>
-  </mat-card-actions>
-</mat-card>
+<a (click)="viewPost(CurrentPost?.postId)">
+  <div>
+    <img class="zoomHover rounded img-fluid" [src]="CurrentPost?.headerImage">
+    <h5 class="zoomHover mt-1 fw-bold">{{CurrentPost?.title}}</h5>
+  </div>
+</a>

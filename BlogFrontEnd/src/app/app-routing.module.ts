@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { CreatePostComponent } from './components/create-post/create-post.component';
 import { EditPostComponent } from './components/edit-post/edit-post.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
+import { ListPostsComponent } from './components/list-posts/list-posts.component';
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { ManagePostsUIComponent } from './components/manage-posts-ui/manage-posts-ui.component';
 import { PostDetailsComponent } from './components/post-details/post-details.component';
@@ -15,6 +16,10 @@ const routes: Routes = [
   {
     path:'',
     component: HomePageComponent
+  },
+  {
+    path:'PostList',
+    component: ListPostsComponent
   },
   {
     path:'Login',
@@ -41,8 +46,7 @@ const routes: Routes = [
   },
   {
     path: 'viewPost/:postId', // needs auth
-    component: ViewPostComponent,
-    canActivate:[AuthG]
+    component: ViewPostComponent
   },
   {
     path: 'ManagePosts/User/:userId', // needs auth
