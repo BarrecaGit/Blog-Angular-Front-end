@@ -19,7 +19,9 @@
         <mat-label for="content">
             <h3 class="fw-bold">Content Editor</h3>
         </mat-label>
-        <quill-editor [modules]="quillConfig" [style]="editorStyle" formControlName="content"></quill-editor><br>
+        <quill-editor [modules]="quillConfig" (onContentChanged)="maxLength($event)" [style]="editorStyle" formControlName="content"></quill-editor><br>
+
+        <p *ngIf="createPostFormGroup.get('content')?.value != null">{{ 1000 - createPostFormGroup.get('content')?.value.length}} characters left</p>
         
           
         <button mat-raised-button class="btnPaddingRight mt-3" text="Create" color="warn">Create</button>

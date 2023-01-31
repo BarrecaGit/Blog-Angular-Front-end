@@ -17,7 +17,9 @@
             <input type="text" matInput name="headerImage" formControlName="headerImage">
         </mat-form-field><br>
 
-        <quill-editor [modules]="quillConfig" name="content" [style]="editorStyle" formControlName="content"></quill-editor>
+        <quill-editor [modules]="quillConfig" name="content" [style]="editorStyle" formControlName="content"></quill-editor><br>
+        
+        <p *ngIf="editPostFormGroup.get('content')?.value != null">{{ 1000 - editPostFormGroup.get('content')?.value!.length}} characters left</p>
 
         <button mat-raised-button class="btnPaddingRight" text="Update" color="warn" >Update</button>
 

@@ -139,4 +139,13 @@ export class CreatePostComponent {
       });
     }
   }
+
+  maxLength(e: any)
+  {
+    if(e.content.getLength() > 1000)
+    {
+      e.content.deleteText(10, e.content.getLength());
+    }
+  }
+
 }

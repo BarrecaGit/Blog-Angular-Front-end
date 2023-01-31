@@ -15,7 +15,7 @@ export class ListPostsComponent implements OnInit {
   postArray:Post[] =[];
   dataSource:any;
   @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
-
+  p: number = 1;
   constructor(private titleSvc:Title,private postInstance:PostService){ }
 
   ngOnInit(): void 
@@ -26,7 +26,7 @@ export class ListPostsComponent implements OnInit {
       this.postArray = result;
       this.dataSource = new MatTableDataSource(this.postArray);
       this.dataSource.paginator = this.paginator;
-      
+
     })
   }
 

@@ -130,4 +130,13 @@ export class EditPostComponent implements OnInit {
     this.router.navigate([`/ManagePosts/User/${this.currentUserId}`]);//nav to manage ui
   }
 
+  
+  maxLength(e: any)
+  {
+    if(e.content.getLength() > 1000)
+    {
+      e.content.deleteText(10, e.content.getLength());
+    }
+  }
+
 }

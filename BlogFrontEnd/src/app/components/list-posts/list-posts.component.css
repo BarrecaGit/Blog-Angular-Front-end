@@ -1,0 +1,5 @@
+.my-pagination ::ng-deep .ngx-pagination .current {
+    height: 150%;
+    width:auto;
+    background-color: #E85A4F;;
+  }

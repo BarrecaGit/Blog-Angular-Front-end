@@ -31,6 +31,7 @@ import { PostDetailsComponent } from './components/post-details/post-details.com
 import { ViewPostComponent } from './components/view-post/view-post.component';
 import { QuillModule } from 'ngx-quill';
 import { ListPostsComponent } from './components/list-posts/list-posts.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -71,7 +72,8 @@ import { ListPostsComponent } from './components/list-posts/list-posts.component
     QuillModule.forRoot({
       modules: {
       }
-    })
+    }), 
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]
